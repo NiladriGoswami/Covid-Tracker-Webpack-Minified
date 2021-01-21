@@ -1,0 +1,88 @@
+Webpack+ JS:
+
+1)Create the folder structure properly:
+	a)build folder: contains index.html & main.js file where minified code will be produced(initailly empty).
+	b)src folder: contains app.js file, where we will write our js code, which will be minified.
+	c)create webpack.config.js file out all the folders.
+
+2)Initially set script src= "app.js" in "index.html" file.
+
+3)Write code in webpack.config.js file:
+	const path = require('path');
+	module.exports = {
+	entry: './src/app.js',
+	output:{
+	filename:'main.js',
+	path:path.resolve(__dirname, 'build')
+	}
+	};
+
+4)Install "package.json" file from terminal via NPM:
+	a)npm init -y
+	b)Configure "pacakge.json" file:
+		1){
+   		"name": "webpack-demo",
+   		"version": "1.0.0",
+   		"description": "",
+  		"main": "index.js", \\remove
+  		"private": true, \\add
+   		"scripts": {
+     		"test": "echo \"Error: no test specified\" && exit 1"
+   		},
+   		"keywords": [],
+   		"author": "",
+   		"license": "ISC",
+   		"devDependencies": {
+     		"webpack": "^5.4.0",
+     		"webpack-cli": "^4.2.0"
+   		}
+ 	      }
+5)Install webpack and webpach-cli from terminal:
+	a)npm install webpack webpack-cli --save-dev
+
+6)Install lodash from terminal:
+	a)npm install --save lodash
+	b)In build/main.js write "import _ from 'lodash';"
+
+7)Set mode in "webpack.config.js" file:
+	const path = require('path');
+
+	module.exports = {
+    	mode:'production', //mode change
+    	entry:'./src/app.js',
+    	output:{
+        filename:'main.js',
+        path:path.resolve(__dirname, 'build')
+    	}
+       };
+
+8)Change the script src = "main.js" in "index.html" file.
+
+9)Modify "package.json" file again:
+	{
+  "name": "Webpack101",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack" //added
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.14.0",
+    "webpack-cli": "^4.3.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
+}
+
+10)npx webpack
+
+11)npx webpack --config webpack.config.js
+
+12)npm run build
+
